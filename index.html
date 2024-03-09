@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statusanzeige und Änderung</title>
+</head>
+<body>
+    <h1>Status: <span id="status">Aktiv</span></h1>
+    
+    <form id="statusForm">
+        <label for="newStatus">Neuer Status:</label>
+        <select id="newStatus" name="newStatus">
+            <option value="Aktiv">Aktiv</option>
+            <option value="Überlastet">Überlastet</option>
+            <option value="Wartungsarbeiten">Wartungsarbeiten</option>
+            <option value="Service Vorläufig Eingestellt">Service Vorläufig Eingestellt</option>
+        </select>
+        <br>
+        <label for="password">Passwort:</label>
+        <input type="password" id="password" name="password">
+        <br>
+        <input type="submit" value="Status ändern">
+    </form>
+
+    <script>
+        document.getElementById("statusForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+            
+            // Hier würde normalerweise eine Überprüfung des Passworts stattfinden, bevor der Status geändert wird.
+            var password = document.getElementById("password").value;
+            // Dummy-Überprüfung des Passworts. In der Praxis sollte dies durch eine sichere Authentifizierungsmethode ersetzt werden.
+            if (password !== "krps-statuspasswd") {
+                alert("Falsches Passwort!");
+                return;
+            }
+
+            var newStatus = document.getElementById("newStatus").value;
+            document.getElementById("status").textContent = newStatus;
+            alert("Status erfolgreich geändert!");
+        });
+    </script>
+</body>
+</html>
